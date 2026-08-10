@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Pintu Lelang Otomotif</title>
+    <title>Tentang Kami - Pintu Lelang Otomotif</title>
     <!-- Google Fonts & Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --bg-main: #0f172a;        /* Dark Slate */
             --bg-card: #1e293b;        /* Lighter Dark Slate */
             --bg-card-hover: #334155;
             --accent-gold: #f59e0b;    /* Gold/Amber */
+            --accent-gold-deep: #d97706;
             --accent-blue: #38bdf8;    /* Neon Cyan/Blue */
             --text-main: #f8fafc;      /* White-ish */
             --text-muted: #94a3b8;     /* Gray */
@@ -29,12 +30,24 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
             background-color: var(--bg-main);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+        }
+
+        .display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        img { max-width: 100%; display: block; }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
         }
 
         /* --- HEADER & NAVBAR --- */
@@ -67,9 +80,8 @@
             letter-spacing: 0.5px;
         }
 
-        .logo i, .logo span {
-            color: var(--accent-gold);
-        }
+        .logo i { color: var(--accent-gold); }
+        .logo span { color: var(--accent-gold); }
 
         .nav-links {
             display: flex;
@@ -85,9 +97,7 @@
             transition: color 0.3s ease;
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--text-main);
-        }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-main); }
 
         .btn-login {
             background-color: var(--accent-gold);
@@ -102,167 +112,455 @@
         }
 
         .btn-login:hover {
-            background-color: #d97706;
+            background-color: var(--accent-gold-deep);
             color: #fff;
             box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
         }
 
-        /* --- ABOUT HERO SECTION --- */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 3px;
+        }
+
+        /* --- ABOUT HERO --- */
         .about-hero {
             position: relative;
-            width: 100%;
-            height: 400px;
-            background-image: url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=1600&q=80');
+            height: 480px;
+            display: flex;
+            align-items: flex-end;
+            background-image: linear-gradient(to top, rgba(15,23,42,1) 5%, rgba(15,23,42,0.55) 55%, rgba(15,23,42,0.35) 100%), url('https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
-            background-position: center;
+            background-position: center 40%;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .about-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 55px;
+            width: 100%;
+        }
+
+        .eyebrow-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            color: var(--accent-gold);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .about-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: clamp(32px, 5vw, 54px);
+            line-height: 1.15;
+            max-width: 760px;
+            margin-bottom: 16px;
+        }
+
+        .about-hero h1 em {
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .about-hero p {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* --- SHARED SECTION LAYOUT --- */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 70px 20px;
+            width: 100%;
+        }
+
+        .section-divider {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(26px, 3.5vw, 38px);
+            margin-bottom: 16px;
+        }
+
+        .section-lead {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 620px;
+        }
+
+        /* --- STORY / SPLIT SECTION --- */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-images {
+            position: relative;
+            height: 420px;
+        }
+
+        .story-img-main {
+            position: absolute;
+            width: 78%;
+            height: 320px;
+            top: 0;
+            left: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+        }
+
+        .story-img-accent {
+            position: absolute;
+            width: 55%;
+            height: 220px;
+            bottom: 0;
+            right: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 4px solid var(--bg-main);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .story-img-main img, .story-img-accent img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        .story-copy p {
+            color: var(--text-muted);
+            font-size: 15.5px;
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .story-copy strong { color: var(--text-main); }
+
+        /* --- STATS STRIP --- */
+        .stats-strip {
+            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(30,41,59,0.4) 100%);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: clamp(28px, 4vw, 42px);
+            color: var(--accent-gold);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-item .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            letter-spacing: 0.4px;
+        }
+
+        /* --- WHY CHOOSE US --- */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 28px 22px;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-4px);
+        }
+
+        .value-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-        }
-
-        .about-hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 1));
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-
-        .hero-content h1 {
-            font-size: 42px;
-            font-weight: 800;
-            color: var(--accent-gold);
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .hero-content p {
+            margin-bottom: 18px;
             font-size: 18px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* --- ABOUT CONTENT SECTION --- */
-        .about-section {
-            max-width: 1200px;
-            margin: -40px auto 60px;
-            padding: 0 20px;
-            position: relative;
-            z-index: 3;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .about-text {
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .about-text h2 {
-            font-size: 28px;
-            color: var(--text-main);
-            margin-bottom: 20px;
-        }
-
-        .about-text h2 span {
             color: var(--accent-blue);
         }
 
-        .about-text p {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+        .value-card h3 {
+            font-size: 16.5px;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
 
-        .about-image {
+        .value-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* --- LOT CATEGORIES (signature element) --- */
+        .lot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .lot-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 340px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+        }
+
+        .lot-card img {
             width: 100%;
             height: 100%;
-            min-height: 400px;
-            background-image: url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=800&q=80');
-            background-size: cover;
-            background-position: center;
+            object-fit: cover;
+            transition: transform 0.6s ease;
         }
 
-        /* --- FEATURES / WHY CHOOSE US --- */
-        .features-section {
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
+        .lot-card:hover img { transform: scale(1.08); }
+
+        .lot-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15,23,42,0.95) 15%, rgba(15,23,42,0.1) 65%);
         }
 
-        .features-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .features-header h2 {
-            font-size: 32px;
-            color: var(--text-main);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-gold);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(245, 158, 11, 0.1);
+        .lot-number {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 2;
+            font-family: 'Playfair Display', serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--accent-gold);
             color: var(--accent-gold);
+            padding: 5px 12px;
+            border-radius: 999px;
+        }
+
+        .lot-content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 2;
+        }
+
+        .lot-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .lot-content p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+        }
+
+        /* --- PROCESS STEPS --- */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 45px;
+            position: relative;
+        }
+
+        .process-step {
+            position: relative;
+            padding: 0 20px;
+            text-align: left;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 22px;
+            right: -10px;
+            width: calc(100% - 24px);
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .process-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            background: var(--accent-gold);
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
-            margin: 0 auto 20px;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 2;
         }
 
-        .feature-card h3 {
-            font-size: 20px;
-            color: var(--text-main);
-            margin-bottom: 15px;
+        .process-step h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
 
-        .feature-card p {
-            font-size: 14px;
+        .process-step p {
+            font-size: 13.5px;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.7;
         }
+
+        /* --- TESTIMONIAL --- */
+        .testimonial-wrap {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+            flex-shrink: 0;
+        }
+
+        .testimonial-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        .testimonial-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(18px, 2.2vw, 23px);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .testimonial-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .testimonial-role {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* --- CTA --- */
+        .cta-section {
+            background: radial-gradient(circle at 20% 20%, rgba(245,158,11,0.12), transparent 55%), radial-gradient(circle at 80% 80%, rgba(56,189,248,0.1), transparent 55%);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .cta-inner {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .cta-inner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(26px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .cta-inner p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 15.5px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: #000;
+            padding: 14px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover { background: var(--accent-gold-deep); color: #fff; }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            padding: 14px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
 
         /* --- FOOTER --- */
         footer {
@@ -302,20 +600,24 @@
 
         /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 900px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            .about-image {
-                min-height: 300px;
-            }
+            .story-grid { grid-template-columns: 1fr; gap: 40px; }
+            .story-images { height: 340px; margin-bottom: 10px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .value-grid { grid-template-columns: repeat(2, 1fr); }
+            .lot-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .process-step:not(:last-child)::after { display: none; }
+            .testimonial-wrap { grid-template-columns: 1fr; text-align: center; padding: 36px 26px; }
+            .testimonial-avatar { margin: 0 auto; }
         }
 
         @media (max-width: 768px) {
             .nav-container { padding: 12px 15px; }
             .nav-links { display: none; }
-            .hero-content h1 { font-size: 32px; }
-            .hero-content p { font-size: 15px; }
-            .about-text { padding: 30px 20px; }
+            .about-hero { height: 400px; }
+            .section { padding: 50px 20px; }
+            .value-grid { grid-template-columns: 1fr; }
+            .cta-buttons { flex-direction: column; }
         }
     </style>
 </head>
@@ -324,11 +626,11 @@
     <!-- HEADER / NAVBAR -->
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo">
+            <a href="#" class="logo">
                 <i class="fa-solid fa-gauge-high"></i>
                 PINTU<span>LELANG</span>
             </a>
-            
+
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" class="active">About</a></li>
@@ -339,62 +641,180 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- ABOUT HERO -->
     <section class="about-hero">
-        <div class="hero-content">
-            <h1>Lebih Dari Sekadar Lelang</h1>
-            <p>Kami menghadirkan panggung bagi mahakarya otomotif. Temukan kendaraan impian Anda melalui proses yang transparan, aman, dan penuh antusiasme.</p>
+        <div class="about-hero-inner">
+            <span class="eyebrow-tag"><i class="fa-solid fa-gavel"></i> Tentang Pintu Lelang</span>
+            <h1>Setiap Lot Punya Cerita, <em>Setiap Ketukan Palu</em> Membuka Peluang Baru.</h1>
+            <p>Kami mempertemukan kolektor, penggemar otomotif, dan pemilik aset dalam satu ruang lelang digital yang jujur, transparan, dan mendebarkan.</p>
         </div>
     </section>
 
-    <!-- ABOUT CONTENT SECTION -->
-    <main class="about-section">
-        <div class="about-grid">
-            <div class="about-text">
-                <h2>Menjembatani Anda dengan <span>Kualitas Terbaik</span></h2>
-                <p><strong>Pintu Lelang</strong> didirikan dengan satu visi jelas: merevolusi cara masyarakat membeli kendaraan berkualitas. Kami bukan sekadar platform perantara, melainkan kurator otomotif yang berdedikasi tinggi.</p>
-                <p>Setiap kendaraan, mulai dari mobil sport eksotis, koleksi klasik, hingga jajaran motor besar dan skuter matik premium, melewati tahap pengujian yang presisi. Kami memastikan standar performa mekanis terjaga—bahkan hingga detail kesesuaian rekomendasi oktan bahan bakar pada mesin—sebelum unit tersebut naik ke panggung lelang kami.</p>
+    <main>
+        <!-- STORY SECTION -->
+        <section class="section">
+            <div class="story-grid">
+                <div class="story-images">
+                    <div class="story-img-main">
+                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80" alt="Mobil klasik yang dipamerkan di ruang lelang">
+                    </div>
+                    <div class="story-img-accent">
+                        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=700&q=80" alt="Palu lelang di atas meja kayu">
+                    </div>
+                </div>
+                <div class="story-copy">
+                    <div class="section-eyebrow">Kisah Kami</div>
+                    <h2 class="section-heading display">Dari Garasi Pribadi ke Panggung Lelang Nasional</h2>
+                    <p>Pintu Lelang lahir dari satu keresahan sederhana: mencari dan melepas kendaraan impian di Indonesia sering kali rumit, tidak transparan, dan penuh ketidakpastian harga. Kami membangun sebuah <strong>arena lelang digital</strong> yang mengubah proses itu menjadi pengalaman yang adil dan menyenangkan bagi semua pihak.</p>
+                    <p>Setiap unit yang naik ke etalase kami melewati proses <strong>verifikasi dan inspeksi berlapis</strong> sebelum boleh ditawar. Kami percaya kepercayaan adalah aset paling berharga dalam sebuah lelang — dan itulah yang kami jaga di setiap transaksi.</p>
+                    <p>Kini, ribuan penawar dari seluruh Indonesia bergabung setiap bulan untuk memburu supercar eksotis, motor gede legendaris, hingga mobil klasik bernilai investasi tinggi.</p>
+                </div>
             </div>
-            <div class="about-image"></div>
-        </div>
+        </section>
+
+        <!-- STATS STRIP -->
+        <section class="stats-strip">
+            <div class="section" style="padding-top: 50px; padding-bottom: 50px;">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-num">12.400+</div>
+                        <div class="stat-label">Kendaraan Terjual</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">58.000+</div>
+                        <div class="stat-label">Penawar Terdaftar</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">34</div>
+                        <div class="stat-label">Kota Mitra Inspeksi</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">4.9/5</div>
+                        <div class="stat-label">Rating Kepuasan</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY CHOOSE US -->
+        <section class="section section-divider">
+            <div class="section-eyebrow">Mengapa Pintu Lelang</div>
+            <h2 class="section-heading display">Berani Menawar Karena Kami Berani Bertanggung Jawab</h2>
+            <p class="section-lead">Kepercayaan bukan slogan — ia dibangun dari sistem yang kami rancang di setiap tahap lelang.</p>
+
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fa-solid fa-magnifying-glass-dollar"></i></div>
+                    <h3>Inspeksi Ketat</h3>
+                    <p>Setiap kendaraan diperiksa tim teknis independen sebelum masuk daftar lelang.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Transaksi Aman</h3>
+                    <p>Dana penawar ditahan aman hingga kendaraan resmi berpindah tangan.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fa-solid fa-eye"></i></div>
+                    <h3>Harga Transparan</h3>
+                    <p>Riwayat tawaran terbuka secara real-time, tanpa negosiasi tersembunyi.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h3>Pendampingan Penuh</h3>
+                    <p>Tim kami siap membantu dari pendaftaran hingga serah terima kendaraan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOT CATEGORIES -->
+        <section class="section section-divider">
+            <div class="section-eyebrow">Yang Kami Lelang</div>
+            <h2 class="section-heading display">Tiga Dunia, Satu Gairah yang Sama</h2>
+            <p class="section-lead">Dari sirkuit hingga garasi kolektor, temukan kategori kendaraan yang memacu adrenalin Anda.</p>
+
+            <div class="lot-grid">
+                <div class="lot-card">
+                    <span class="lot-number">LOT 01</span>
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Supercar eksotis di panggung lelang">
+                    <div class="lot-content">
+                        <h3 class="display">Supercar Eksotis</h3>
+                        <p>Unit performa tinggi dari rumah karoseri ternama dunia.</p>
+                    </div>
+                </div>
+                <div class="lot-card">
+                    <span class="lot-number">LOT 02</span>
+                    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80" alt="Motor gede yang siap dilelang">
+                    <div class="lot-content">
+                        <h3 class="display">Moge Gagah</h3>
+                        <p>Motor besar bertenaga untuk pengendara sejati jalanan.</p>
+                    </div>
+                </div>
+                <div class="lot-card">
+                    <span class="lot-number">LOT 03</span>
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80" alt="Mobil klasik langka bernilai investasi">
+                    <div class="lot-content">
+                        <h3 class="display">Mobil Klasik</h3>
+                        <p>Unit langka bersejarah dengan nilai investasi yang terus naik.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="section section-divider">
+            <div class="section-eyebrow">Cara Kerja</div>
+            <h2 class="section-heading display">Empat Langkah Menuju Kendaraan Impian</h2>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-num">1</div>
+                    <h4>Daftar & Verifikasi</h4>
+                    <p>Buat akun dan lengkapi verifikasi identitas dalam hitungan menit.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-num">2</div>
+                    <h4>Pilih Lot Favorit</h4>
+                    <p>Telusuri katalog dan pelajari laporan inspeksi tiap kendaraan.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-num">3</div>
+                    <h4>Pasang Tawaran</h4>
+                    <p>Ikuti lelang langsung dan pantau kompetisi harga secara real-time.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-num">4</div>
+                    <h4>Bawa Pulang</h4>
+                    <p>Selesaikan pembayaran aman dan atur serah terima kendaraan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIAL -->
+        <section class="section section-divider">
+            <div class="testimonial-wrap">
+                <div class="testimonial-avatar">
+                    <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=200&q=80" alt="Foto profil kolektor mobil">
+                </div>
+                <div>
+                    <p class="testimonial-quote">"Saya menemukan mobil klasik yang saya cari selama tiga tahun, dan seluruh prosesnya terasa jujur dari awal sampai akhir. Laporan inspeksinya benar-benar detail."</p>
+                    <div class="testimonial-name">Bagus Prakoso</div>
+                    <div class="testimonial-role">Kolektor Mobil Klasik, Surabaya</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section cta-section">
+            <div class="cta-inner">
+                <h2 class="display">Buka Pintu Peluang Anda Hari Ini</h2>
+                <p>Bergabunglah dengan ribuan penawar dan temukan kendaraan yang selama ini Anda cari, dengan proses yang aman dan transparan.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-primary"><i class="fa-solid fa-gavel"></i> Mulai Menawar</a>
+                    <a href="index.html" class="btn-secondary">Lihat Katalog Lelang</a>
+                </div>
+            </div>
+        </section>
     </main>
-
-    <!-- FEATURES / WHY CHOOSE US -->
-    <section class="features-section">
-        <div class="features-header">
-            <h2>Mengapa Memilih Pintu Lelang?</h2>
-        </div>
-        <div class="features-grid">
-            
-            <!-- Feature 1 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fa-solid fa-magnifying-glass-chart"></i>
-                </div>
-                <h3>Inspeksi 360 Derajat</h3>
-                <p>Kepercayaan adalah kunci. Tim ahli kami melakukan lebih dari 150 titik inspeksi teknis dan fisik untuk memberikan laporan kondisi kendaraan yang 100% jujur dan akurat kepada Anda.</p>
-            </div>
-
-            <!-- Feature 2 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fa-solid fa-gavel"></i>
-                </div>
-                <h3>Penawaran Adil & Real-time</h3>
-                <p>Sistem *bidding* berteknologi tinggi kami memastikan setiap penawaran diproses secara *real-time* tanpa jeda. Semua peserta memiliki peluang yang persis sama untuk menang.</p>
-            </div>
-
-            <!-- Feature 3 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <h3>Transaksi Aman Terjamin</h3>
-                <p>Didukung oleh regulasi yang ketat dan partner perbankan tepercaya, seluruh aliran dana dan serah terima dokumen legal dijamin aman hingga kendaraan tiba di garasi Anda.</p>
-            </div>
-
-        </div>
-    </section>
 
     <!-- FOOTER -->
     <footer>
@@ -406,5 +826,6 @@
             &copy; 2026 Pintu Lelang Otomotif. Seluruh Hak Cipta Dilindungi.
         </div>
     </footer>
+
 </body>
 </html>
